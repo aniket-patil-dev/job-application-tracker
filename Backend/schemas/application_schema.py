@@ -1,5 +1,7 @@
 from enum import Enum
-from pydantic import BaseModel, Field, HttpUrl, ConfigDict
+from pydantic import BaseModel, Field, HttpUrl, ConfigDict, field_serializer
+from datetime import datetime
+
 
 class ApplicationStatus(str, Enum):
     applied = "applied"
@@ -29,7 +31,13 @@ class ApplicationResponse(BaseModel):
     url: HttpUrl | None = None
     status: ApplicationStatus
     notes: str | None = None
+    created_at: datetime
+    updated_at: datetime
 
     model_config = ConfigDict(
         from_attributes=True
     )
+
+    @field_serializer('url')
+    def serialize_url(self, url: HttpUrl | None) -> str | None:
+        return str(url) if url else None

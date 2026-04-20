@@ -23,3 +23,6 @@ def get_user(user_id: int, db: Session):
     return db.query(Users).filter(
         Users.user_id == user_id
     ).first()
+
+def get_user_by_email(email: str, db: Session):
+    return db.query(Users).filter(Users.email == email).first()

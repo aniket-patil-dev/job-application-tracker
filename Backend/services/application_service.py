@@ -38,6 +38,8 @@ def update_application(app_id: int, data: ApplicationUpdate, db: Session):
     db.refresh(application)
     return  application
 
+def get_application(app_id: int, db: Session):
+    return db.query(Application).filter(Application.application_id == app_id).first()
 
 def get_all_applications(db: Session, user_id: int):
     return db.query(Application).filter(
