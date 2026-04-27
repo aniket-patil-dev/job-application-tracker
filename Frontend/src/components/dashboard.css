@@ -1,0 +1,218 @@
+.right-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #0d1018;
+    overflow: hidden;
+}
+
+/* ── TOP SECTION ── */
+.top-container {
+    padding: 2rem 2.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+
+.greetings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 1.75rem;
+}
+
+.greetings-container h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.greetings-container h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.greetings-container h3 span {
+    color: #00d4aa;
+    font-weight: 600;
+}
+
+/* ── STAT CARDS ROW ── */
+.stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.stats::-webkit-scrollbar {
+    height: 0;
+}
+
+/* ── BOTTOM SECTION ── */
+.bottom-container {
+    flex: 1;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 2.5rem 2rem;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* ── RECENT APPLICATIONS PANEL ── */
+.application-details {
+    flex: 1.2;
+    min-width: 0;
+    background: #161b27;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    flex-shrink: 0;
+}
+
+.panel-header h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.2px;
+}
+
+.panel-count {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.05);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.application-overview {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.application-overview::-webkit-scrollbar {
+    width: 4px;
+}
+
+.application-overview::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.application-overview::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+}
+
+/* ── STATUS BREAKDOWN PANEL ── */
+.status-breakdown-container {
+    width: 280px;
+    min-width: 240px;
+    background: #161b27;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.status-breakdown-container .panel-header {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.progress-list {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1.25rem;
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-meta label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    cursor: default;
+}
+
+.progress-meta .progress-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.6s ease;
+}
+
+.fill-applied   { background: #3b82f6; }
+.fill-interview { background: #f59e0b; }
+.fill-offered   { background: #00d4aa; }
+.fill-hired     { background: #22c55e; }
+.fill-rejected  { background: #ef4444; }
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 1110px) {
+    .bottom-container {
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .application-details {
+        min-height: 340px;
+        max-height: 420px;
+    }
+
+    .status-breakdown-container {
+        width: 100%;
+        min-height: 280px;
+    }
+}

@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 260px;
+    min-width: 260px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f1117;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    z-index: 10;
+}
+
+/* Subtle vertical accent line */
+.container::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: -1px;
+    height: 80%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 212, 170, 0.3), transparent);
+}
+
+.header-container {
+    width: 100%;
+    padding: 2rem 1.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-container h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #00d4aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-container h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 2px;
+    background: none;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.35);
+}
+
+.selection-container {
+    width: 100%;
+    flex: 1;
+    padding: 1.5rem 1rem;
+}
+
+.selection-container ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 4px;
+}
+
+.nav-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.75rem 0.25rem;
+    background: none;
+    -webkit-text-fill-color: rgba(255,255,255,0.25);
+}
+
+.selection-container li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 0.65rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    position: relative;
+    background: transparent;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.5);
+}
+
+.selection-container li .nav-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.selection-container li:hover {
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.04);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.85);
+    border: none;
+}
+
+.selection-container li:hover .nav-icon {
+    opacity: 0.9;
+}
+
+.selection-container .active {
+    color: #ffffff;
+    background: rgba(0, 212, 170, 0.1);
+    border: none;
+    -webkit-text-fill-color: #ffffff;
+}
+
+.selection-container .active .nav-icon {
+    opacity: 1;
+    color: #00d4aa;
+}
+
+.selection-container .active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    background: #00d4aa;
+    border-radius: 0 3px 3px 0;
+}
+
+.profile-container {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #0f1117;
+}
+
+.profile-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d4aa, #0099ff);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0f1117;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.profile-container h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    background: none;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.85);
+}
+
+.profile-container h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #00d4aa;
+    background: none;
+    -webkit-text-fill-color: #00d4aa;
+}
+
+@media screen and (max-width: 1150px) {
+    .container {
+        display: none;
+    }
+}

@@ -1,0 +1,45 @@
+.stat-container {
+    min-width: 180px;
+    padding: 1.25rem 1.5rem;
+    background: #161b27;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    cursor: default;
+}
+
+.stat-container:hover {
+    border-color: rgba(0, 212, 170, 0.25);
+    transform: translateY(-2px);
+}
+
+.stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.stat-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.stat-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 2px;
+}
+
+.stat-container.accent .stat-amount {
+    color: #00d4aa;
+}
