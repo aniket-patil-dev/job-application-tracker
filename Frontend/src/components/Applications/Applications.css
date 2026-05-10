@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.applications-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading-container {
+    width: 100%;
+    height: 10%;
+    padding: 0.3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.heading-container h1 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.heading-container button {
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+}
+
+.application-summary {
+    width: 100%;
+    height: 90%;
+    padding: 0.3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filters {
+    display: flex;
+    gap: 20px;
+    align-self: start;
+}
+
+.filter-active {
+    color: aquamarine;
+}
+
+.applications-tbl {
+    width: 80%;
+    margin-top: 2rem;
+    border: 1px solid white;
+    padding: 0.3rem 2rem;
+}

@@ -6,9 +6,8 @@
     box-sizing: border-box;
 }
 
-.container {
-    width: 260px;
-    min-width: 260px;
+.sidebar-container {
+    width: 20%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,7 +18,7 @@
 }
 
 /* Subtle vertical accent line */
-.container::after {
+.sidebar-container::after {
     content: '';
     position: absolute;
     top: 10%;
@@ -190,6 +189,10 @@
     color: #00d4aa;
     background: none;
     -webkit-text-fill-color: #00d4aa;
+}
+
+ul a {
+    text-decoration: none;
 }
 
 @media screen and (max-width: 1150px) {

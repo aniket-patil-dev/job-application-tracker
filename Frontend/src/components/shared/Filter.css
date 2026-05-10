@@ -1,0 +1,21 @@
+.filter-button {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    width: 100px;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;   
+}
+
+.filter-active {
+    background-color: #00d4aa;
+    color: #0f1117;
+
+}
+
+.filter-button:hover {
+    background-color: #00d4bf;
+}
