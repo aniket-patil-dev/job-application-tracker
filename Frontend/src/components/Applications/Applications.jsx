@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Applications.css";
 import Filter from "../shared/Filter";
 import { useApp } from "../../context/AppContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faCopy, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const STATUSES = ["All", "Applied", "Interview", "Offered", "Rejection"];
 
@@ -22,7 +22,35 @@ function Applications() {
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [editMode, setEditMode] = useState(false)
 
+  const removeApplication = async (app_id) => {
+    
+    try {
+      const res = await fetch(`applications/${app_id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      
+      if (!res.ok) throw new Error("Failed to Delete.")
+
+      setApplications(applications.filter((app) => app.application_id !== app_id))
+    } catch (error) {
+      setError(error.message)
+    }
+  }
+
+  const editApplication = (app_id) => {
+    let res = applications.find((app) => app.application_id === app_id)
+
+    setShowModal(true)
+    setFormData(res)
+    setEditMode(true)
+  }
+  
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -36,9 +64,46 @@ function Applications() {
     setError("");
   };
 
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setEditMode(false)
+    setError("");
+
+    try {
+      const res = await fetch(`applications/${formData.application_id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          company_name: formData.company_name,
+          title: formData.title,
+          url: formData.url ? formData.url : null,
+          status: formData.status.toLowerCase(),
+          notes: formData.notes,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || "Failed to create.");
+
+      setApplications((prev) => prev.map((app) => app.application_id === data.application_id ? data : app));
+
+      closeModal();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setEditMode(false)
     setError("");
 
     try {
@@ -98,6 +163,7 @@ function Applications() {
 
         <table className="applications-tbl">
           <thead>
+            <th>Sr.No</th>
             <th>Company/Roles</th>
             <th>Date Applied</th>
             <th>Status</th>
@@ -105,8 +171,9 @@ function Applications() {
           </thead>
 
           <tbody style={{ textAlign: "center" }}>
-            {filteredData.map((app) => (
-              <tr key={app.application_id}>
+            {filteredData.map((app, index) => (
+              <tr key={app.application_id} >
+                <td>{index + 1}</td>
                 <td>
                   <strong>
                     {app.company_name} / {app.title}
@@ -115,7 +182,7 @@ function Applications() {
 
                 <td>{app.created_at}</td>
                 <td>
-                  <span className={`status ${app.status.toLowerCase()}`}>
+                  <span className={`status ${app.status}`}>
                     {app.status}
                   </span>
                 </td>
@@ -128,10 +195,10 @@ function Applications() {
                     gap: "1rem",
                   }}
                 >
-                  <button>
-                    <FontAwesomeIcon icon={faCopy} />
+                  <button onClick={() => editApplication(app.application_id)}>
+                    <FontAwesomeIcon icon={faPenToSquare} />
                   </button>
-                  <button>
+                  <button onClick={() => removeApplication(app.application_id)}>
                     <FontAwesomeIcon icon={faXmark} />
                   </button>
                 </td>
@@ -145,11 +212,11 @@ function Applications() {
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <h2>New Application</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={editMode ? handleEditSubmit : handleSubmit}>
               <label>Company</label>
               <input
                 name="company_name"
-                value={formData.company}
+                value={formData.company_name}
                 onChange={handleChange}
                 required
               />
@@ -182,7 +249,7 @@ function Applications() {
               <br></br>
 
               <label>Notes</label>
-              <textarea name="notes" id="notes"></textarea>
+              <textarea name="notes" id="notes" value={formData.notes} onChange={handleChange}></textarea>
               <br></br>
 
               <label>Date Applied</label>

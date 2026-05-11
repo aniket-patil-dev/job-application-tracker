@@ -54,3 +54,11 @@
     border: 1px solid white;
     padding: 0.3rem 2rem;
 }
+
+thead {
+    font-size: large;
+}
+
+td button {
+    cursor: pointer;
+}
