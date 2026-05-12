@@ -196,7 +196,7 @@ ul a {
 }
 
 @media screen and (max-width: 1150px) {
-    .container {
+    .sidebar-container {
         display: none;
     }
 }

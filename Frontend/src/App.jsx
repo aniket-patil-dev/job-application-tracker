@@ -6,6 +6,7 @@ import Layout from "./components/Layout/Layout";
 import Applications from "./components/Applications/Applications";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { useApp } from "./context/AppContext";
+import Profile from "./components/Profile/Profile";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route index element={<Navigate to="/dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="applications/" element={<Applications />} />
+          <Route path="profile" element={<Profile/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

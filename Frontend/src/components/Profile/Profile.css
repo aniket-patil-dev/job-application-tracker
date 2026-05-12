@@ -1,0 +1,228 @@
+.full-profile-container {
+    width: 100%;
+    height: 100vh;
+    background: #0d1018;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2.5rem;
+    overflow-y: auto;
+}
+
+.profile-page-header {
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+}
+
+.profile-page-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.profile-page-header p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 4px;
+}
+
+/* ── CARD ── */
+.profile-card-container {
+    background: #161b27;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 680px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.profile-picture {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d4aa, #0099ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f1117;
+    flex-shrink: 0;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.profile-details h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-details h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-badge {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #00d4aa;
+    background: rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(0, 212, 170, 0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+/* ── INFO SECTION ── */
+.profile-info-section {
+    background: #161b27;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    max-width: 680px;
+    width: 100%;
+}
+
+.section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.2px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.info-item label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.info-item span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.full-profile-container button {
+    width: fit-content;
+    font-size: large;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    border: 1px solid red;
+    color: red;
+    background-color: transparent;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: 5px 5px 8px rgba(233, 43, 43, 0.3);
+    height: -1px;
+}
+
+/* ── RESPONSIVE ── */
+
+/* Tablet */
+@media screen and (max-width: 1110px) {
+    .full-profile-container {
+        height: auto;
+        min-height: 100vh;
+        padding: 1.5rem;
+    }
+
+    .profile-card-container,
+    .profile-info-section {
+        max-width: 100%;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+    .full-profile-container {
+        padding: 1.25rem 1rem;
+    }
+
+    .profile-page-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .profile-card-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        padding: 1.5rem;
+    }
+
+    .profile-picture {
+        width: 72px;
+        height: 72px;
+        font-size: 1.6rem;
+    }
+
+    .profile-details h1 {
+        font-size: 1.15rem;
+        white-space: normal;
+    }
+
+    .profile-details h3 {
+        white-space: normal;
+        word-break: break-all;
+    }
+
+    .profile-info-section {
+        padding: 1.25rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}

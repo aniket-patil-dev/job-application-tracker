@@ -1,0 +1,65 @@
+.layout-root {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layout-content {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+/* Mobile bottom nav — hidden on desktop */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media screen and (max-width: 1150px) {
+  .layout-root {
+    flex-direction: column;
+    height: 100dvh; /* dynamic viewport for mobile browsers */
+  }
+
+  .layout-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 64px; /* leave room for bottom nav */
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #0f1117;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    z-index: 100;
+  }
+
+  .mobile-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav-item svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-nav-item.mobile-nav-active {
+    color: #00d4aa;
+  }
+}

@@ -11,9 +11,10 @@ function Dashboard() {
 
   const counts = {
     total: applications.length,
-    interviews: applications.filter((a) => a.status === "Interview").length,
-    offered: applications.filter((a) => a.status === "Offered").length,
-    rejected: applications.filter((a) => a.status === "Rejected").length,
+    interviews: applications.filter((a) => a.status === "interview").length,
+    offered: applications.filter((a) => a.status === "offered").length,
+    hired: applications.filter((a) => a.status === "hired").length,
+    rejected: applications.filter((a) => a.status === "rejected").length,
   };
 
   const total = applications.length || 1;
@@ -22,7 +23,7 @@ function Dashboard() {
     {
       label: "Applied",
       value: Math.round(
-        (applications.filter((a) => a.status === "Applied").length / total) *
+        (applications.filter((a) => a.status === "applied").length / total) *
           100,
       ),
       cls: "fill-applied",
@@ -30,7 +31,7 @@ function Dashboard() {
     {
       label: "Interview",
       value: Math.round(
-        (applications.filter((a) => a.status === "Interview").length / total) *
+        (applications.filter((a) => a.status === "interview").length / total) *
           100,
       ),
       cls: "fill-interview",
@@ -38,7 +39,7 @@ function Dashboard() {
     {
       label: "Offered",
       value: Math.round(
-        (applications.filter((a) => a.status === "Offered").length / total) *
+        (applications.filter((a) => a.status === "offered").length / total) *
           100,
       ),
       cls: "fill-offered",
@@ -46,14 +47,14 @@ function Dashboard() {
     {
       label: "Hired",
       value: Math.round(
-        (applications.filter((a) => a.status === "Hired").length / total) * 100,
+        (applications.filter((a) => a.status === "hired").length / total) * 100,
       ),
       cls: "fill-hired",
     },
     {
       label: "Rejected",
       value: Math.round(
-        (applications.filter((a) => a.status === "Rejected").length / total) *
+        (applications.filter((a) => a.status === "rejected").length / total) *
           100,
       ),
       cls: "fill-rejected",
@@ -90,6 +91,11 @@ function Dashboard() {
               sub="Pending review"
             />
             <IndividualStat
+              title="Hired"
+              amount={counts.hired}
+              sub="Done and Dusted"
+            />
+            <IndividualStat
               title="Rejected"
               amount={counts.rejected}
               sub="This month"
@@ -114,7 +120,7 @@ function Dashboard() {
                   <ApplicationOverview
                     key={app.app_id}
                     company={app.company_name}
-                    role={app.role}
+                    title={app.title}
                     status={app.status}
                     initials={app.company_name?.[0] || "?"}
                   />

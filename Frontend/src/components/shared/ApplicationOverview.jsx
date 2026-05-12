@@ -9,7 +9,7 @@ const statusClasses = {
   Hired: 'status-hired',
 }
 
-function ApplicationOverview({ company = 'Company Name', role = 'Job Title', status = 'Applied', initials = 'C' }) {
+function ApplicationOverview({ company = 'Company Name', title = 'Job Title', status = 'Applied', initials = 'C' }) {
   return (
     <div className='overview-container'>
       <div className='company-logo'>
@@ -18,7 +18,7 @@ function ApplicationOverview({ company = 'Company Name', role = 'Job Title', sta
 
       <div className='company-details'>
         <span className='company-name'>{company}</span>
-        <span className='job-title'>{role}</span>
+        <span className='job-title'>{title}</span>
       </div>
 
       <span className={`current-status ${statusClasses[status] || 'status-applied'}`}>
